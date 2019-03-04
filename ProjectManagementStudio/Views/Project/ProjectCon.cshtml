@@ -1,0 +1,282 @@
+﻿@model IEnumerable<EmsEntity.Project>
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Account</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/Bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Bootstrap/style.css" rel="stylesheet" />
+    <link href="~/Bootstrap/bootstrap.min.js" rel="stylesheet" />
+    <link href="~/Bootstrap/bootstrap.bundle.js" rel="stylesheet" />
+    <link href="~/Bootstrap/bootstrap.js" rel="stylesheet" />
+
+
+</head>
+
+<body>
+    @if (ViewBag.msg != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.msg");
+            };
+            
+
+        </script>
+    }
+    @if (Session["msg"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@Session["msg"]");
+                
+            };
+
+
+        </script>
+    }
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/Ceoacc/CeoCon"><</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/Homepage">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/News">News</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://localhost:52320/@Session["UserAcc"]">Account<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/@Session["LogoutAcc"]">Log Out</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+    
+
+    <table width="100%" cellspacing="0" cellpadding="10" border="1">
+        <tr>
+            <td colspan="2" valign="middle" height="70">
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <a href="account/dashboard.html" target="contentFrame">
+                                <img height="48" src="~/Picture/visual_studio_purple.png">
+                            </a>
+                        </td>
+                        
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td width="220" valign="top">
+                <ul>
+                    <li><a href="/Project/CreateProject">Create project</a></li>
+                    <li><a href="/Project/ViewProjects">View projects</a></li>
+                    <li><a href="/Project/CloseProject">Close project</a></li>
+                </ul>
+                
+              
+               
+
+            </td>
+            <td valign="top">
+               
+                <table class="table">
+
+                    <h1> Closed Projects</h1>
+
+                    @if ((Session["prospace"]).ToString() != "0")
+                    {
+
+
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Budget
+                        </th>
+                        <th>
+                            Starting Date
+                        </th>
+                        <th>
+                            Ending Date
+                        </th>
+                    </tr>
+                    }
+                    else
+                    {
+                        <h3>No records</h3>
+                    }
+
+                    @foreach(var item in Model)
+                    {
+                        
+                            if (item.ProjectStatus == "Finished")
+                            {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Budget)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StartDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EndDate)
+                            </td>
+                        </tr>
+                            }
+                     }
+                </table>
+                <table class="table">
+                    <br /><br /><br />
+
+                    <h1>Running Projects</h1>
+
+                    @if ((Session["prospace"]).ToString() != "0")
+                    {
+                        <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Budget
+                        </th>
+                        <th>
+                            Starting Date
+                        </th>
+                        
+                    </tr>
+                    }
+                    else
+                    {
+                        <h3>No records</h3>
+                    }
+                    
+                    @foreach (var item in Model)
+                    {
+                        
+                            if (item.ProjectStatus == "Running")
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Budget)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StartDate)
+                                </td>
+                                
+                            </tr>
+                            } 
+                     }
+                </table>
+                <table class="table">
+                    <br />
+                    <br />
+                    <br />
+                    <h1>Financials</h1>
+                    <tr>
+                        <th>
+                            Estimated Earnings
+                        </th>
+
+                        <th>
+                            @Session["TotalMoney"]
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Earned Money
+                        </th>
+
+                        <th>
+                            @Session["EarnedMoney"]
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Pending Money
+                        </th>
+
+                        <th>
+                            @Session["PendingMoney"]
+                        </th>
+                    </tr>
+                </table>
+                <table class="table">
+                    <br />
+                    <br />
+                    <br />
+                    <h1>Employee</h1>
+                    <tr>
+                        <th>
+                            Employee Type
+                        </th>
+
+                        <th>
+                            Number Of Employee
+
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            Project Manager
+                        </td>
+
+                        <td>
+                            @Session["ProjectManager"]
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            Developer
+                        </td>
+
+                        <td>
+                            @Session["Developer"]
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            Designer
+                        </td>
+
+                        <td>
+                            @Session["Designer"]
+                        </td>
+
+                    </tr>
+                </table>
+
+
+
+            </td>
+        </tr>
+    </table>
+    </body>
+</html>

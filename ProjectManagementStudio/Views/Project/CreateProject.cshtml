@@ -1,0 +1,90 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <title>Account</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/Bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Bootstrap/style.css" rel="stylesheet" />
+    <link href="~/Bootstrap/bootstrap.min.js" rel="stylesheet" />
+    <link href="~/Bootstrap/bootstrap.bundle.js" rel="stylesheet" />
+    <link href="~/Bootstrap/bootstrap.js" rel="stylesheet" />
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/Project/ProjectCon"><</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/Homepage">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/News">News</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://localhost:52320/@Session["UserAcc"]">Account<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/@Session["LogoutAcc"]">Log Out</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+    <div>
+        
+        <form method="post" enctype="multipart/form-data" data-toggle="validator">
+
+            <div style="position:absolute;z-index:1;" id="layer1">
+                <div class="modal-body" style="margin:50px 100px 0px 200px;">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            
+                            <div class="form-group">
+
+                                <input type="text" class="form-control" name="Name" placeholder="Project Name" required />
+                                <span class="help-block"></span>
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <input type="number" class="form-control" name="Budget" placeholder="Budget" required />
+                                <span class="help-block"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Create</button>
+                                <span class="help-block"></span>
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+</div>
+    </body>
+</html>

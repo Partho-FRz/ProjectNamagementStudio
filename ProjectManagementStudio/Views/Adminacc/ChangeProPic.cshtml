@@ -1,0 +1,73 @@
+﻿
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Change picture</title>
+    <link href="~/Bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/Homepage">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/News">News</a>
+                </li>
+
+                <li class="nav-item ">
+                    <a class="nav-link" href="http://localhost:52320/Adminacc">Account</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/Adminacc/Logout">Log Out</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+    <form method="post" enctype="multipart/form-data">
+
+        <div style="position:absolute;z-index:1;" id="layer1">
+            <div class="modal-body" style="margin:50px 100px 0px 200px;">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>Select employee type</label>
+                        <div class="form-group">
+                            
+                        
+                            <input type="file" name="file1" id="file1" accept="image/*" />
+                            <span class="help-block"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn btn-block">Create</button>
+                            <span class="help-block"></span>
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</body>
+</html>

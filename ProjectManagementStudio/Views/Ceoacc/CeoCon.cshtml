@@ -1,0 +1,115 @@
+﻿@model EmsEntity.Employee
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <title>Account</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="~/Bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Bootstrap/style.css" rel="stylesheet" />
+    <link href="~/Bootstrap/bootstrap.min.js" rel="stylesheet" />
+    <link href="~/Bootstrap/bootstrap.bundle.js" rel="stylesheet" />
+    <link href="~/Bootstrap/bootstrap.js" rel="stylesheet" />
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/Homepage">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/News">News</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://localhost:52320/@Session["UserAcc"]">Account<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/@Session["LogoutAcc"]">Log Out</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+    <table width="100%" cellspacing="0" cellpadding="10" border="1">
+        <tr>
+            <td colspan="2" valign="middle" height="70">
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <a href="account/dashboard.html" target="contentFrame">
+                                <img height="48" src="~/Picture/visual_studio_purple.png">
+                            </a>
+                        </td>
+                        <td align="right">
+                            Logged in as <a href="/@Session["ConName"]/Profile" target="contentFrame">@Session["FName"] @Session["LName"]</a>&nbsp;<a href="/@Session["ConName"]/Profile" target="contentFrame"><img src="@Session["image"]" style="max-width:50px;max-height:50px" /></a>|
+                            <a>@Session["UserType"]</a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td width="220" valign="top">
+                <ul>
+                    <li><a href="/@Session["ConName"]/Dashboard">Dashboard</a></li>
+                    <li><a href="/@Session["ConName"]/Profile">View profile</a></li>
+                    <li><a href="/@Session["ConName"]/EditProfile">Edit profile</a></li>
+                    <li><a href="/@Session["ConName"]/ChangeProPic">Change profile picture</a></li>
+                    <li><a href="/@Session["ConName"]/ChangePass">Change password</a></li>
+                </ul>
+                <hr />
+                <ul>
+                    <li><a href="http://localhost:52320/Project/ProjectCon">Project management</a></li>                    
+                </ul>
+
+                <!-- ADVANCED FEATURES
+
+                <hr /><b>&nbsp;User</b><hr />
+                <ul>
+                    <li><a href="user/search.html" target="contentFrame">Search</a></li>
+                    <li><a href="user/create.html" target="contentFrame">Create New</a></li>
+                </ul>
+                <hr /><b>&nbsp;Report</b><hr />
+                <ul>
+                    <li>User Reports
+                        <ul>
+                            <li><a href="report/user/statistics_report.html">Statistics Report</a></li>
+                            <li><a href="report/user/activity_report.html">Activity Report</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+                ADVANCED FEATURES END HERE
+                -->
+
+            </td>
+            <td valign="top">
+
+                <!-- CONTENTS GOES HERE -->
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

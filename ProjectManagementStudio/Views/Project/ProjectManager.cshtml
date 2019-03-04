@@ -1,0 +1,98 @@
+﻿@model IEnumerable<EmsEntity.ProjectManager>
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+
+        <title>Account</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="~/Bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Bootstrap/style.css" rel="stylesheet" />
+        <link href="~/Bootstrap/bootstrap.min.js" rel="stylesheet" />
+        <link href="~/Bootstrap/bootstrap.bundle.js" rel="stylesheet" />
+        <link href="~/Bootstrap/bootstrap.js" rel="stylesheet" />
+
+
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:52320/Homepage">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:52320/News">News</a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="http://localhost:52320/@Session["UserAcc"]">Account<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:52320/@Session["LogoutAcc"]">Log Out</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <div>
+
+            <form method="post">
+                <table class="table">
+                    <tr>
+                        <th>
+                            User Id
+                        </th>
+                        <th>
+                            Project Manager Name
+                        </th>
+                        <th>
+                            Status
+                        </th>
+
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                <input type="radio" name="Proselect" value="@item.UserId" required>@item.UserId<br>
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FirstName)
+                                @Html.HiddenFor(modelItem => item.UserId)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            
+
+                        </tr>
+                    }
+
+                </table>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                    <span class="help-block"></span>
+                </div>
+                
+            </form>
+        </div>
+    </body>
+</html>

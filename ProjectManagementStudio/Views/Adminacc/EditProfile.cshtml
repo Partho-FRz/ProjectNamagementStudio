@@ -1,0 +1,104 @@
+﻿@model EmsEntity.Employee
+<html>
+<head>
+    <link href="~/Bootstrap/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+
+
+<body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:52320/Homepage">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:52320/News">News</a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="http://localhost:52320/Adminacc">Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:52320/Adminacc/Logout">Log Out</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+        <fieldset>
+            <legend><b>EDIT PROFILE</b></legend>
+            <form method="post">
+                <br />
+                <table width="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td width="100"></td>
+                        <td width="10"></td>
+                        <td width="230"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.Id)
+                        @Html.HiddenFor(model => model.Salary)
+                        <td>First Name</td>
+                        <td>:</td>
+                        <td>@Html.EditorFor(model => model.FirstName)</td>
+                        <td></td>
+                    </tr>
+                    <tr><td colspan="4"><hr /></td></tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td>:</td>
+                        <td>@Html.EditorFor(model => model.LastName)</td>
+                        <td></td>
+                        @Html.HiddenFor(model => model.WorkingSince)
+                    </tr>
+                    <tr><td colspan="4"><hr /></td></tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>:</td>
+                        <td>
+                            @Html.EditorFor(model => model.Email)
+                            <abbr title="hint: sample@example.com"><b>i</b></abbr>
+                        </td>
+                        <td></td>
+                    <tr><td colspan="4"><hr /></td></tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>:</td>
+                        <td>@Html.EditorFor(model => model.Address)</td>
+                        <td></td>
+                    </tr>
+                    <tr><td colspan="4"><hr /></td></tr>
+                    <tr>
+
+                        <td>Mobile NO</td>
+                        <td>:</td>
+                        <td>@Html.EditorFor(model => model.MobileNo)</td>
+                        <td></td>
+                        @Html.HiddenFor(model => model.DOB)
+                        @Html.HiddenFor(model => model.UserId)
+                        @Html.HiddenFor(model => model.Password)
+                        @Html.HiddenFor(model => model.Picture)
+                        @Html.HiddenFor(model => model.NID)
+                        @Html.HiddenFor(model => model.UserType)
+
+                    </tr>
+                </table>
+                <hr />
+                <input type="submit">                          
+            </form>
+        </fieldset>
+    </body>
+</html>
+

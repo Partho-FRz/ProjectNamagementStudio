@@ -1,0 +1,111 @@
+﻿@model IEnumerable<EmsEntity.Project>
+<html>
+<head>
+    <link href="~/Bootstrap/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/Project/ProjectCon"><</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/Homepage">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/News">News</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://localhost:52320/@Session["UserAcc"]">Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:52320/@Session["LogoutAcc"]">Log Out</a>
+                </li>
+            </ul>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    <input type="text" name="search" id="search" class="form-control" placeholder="Search">
+                </div>
+            </div>
+        </div>
+
+    </nav>
+    <form method="post">
+        <h1>Project List</h1>
+        <table class="table">
+            <tr>
+                <th>
+                    Project Name
+                </th>
+                <th>
+                    Budget
+                </th>
+                <th>
+                   Status
+                </th>
+
+
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+
+                <tr class="Search">
+                    <td>
+                        <a href="http://localhost:52320/Project/Close/@item.Id" new { id=item.Id }>@Html.DisplayFor(modelItem => item.Name)</a>
+                    </td>
+                    <td>
+                        <a href="http://localhost:52320/Project/Close/@item.Id">@Html.DisplayFor(modelItem => item.Budget)</a>
+                    </td>
+                    <td>
+                        <a href="http://localhost:52320/Project/Close/@item.Id">@Html.DisplayFor(modelItem => item.ProjectStatus)</a>
+                    </td>
+
+
+
+                </tr>
+            }
+
+        </table>
+        <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                function Contains(text_one, text_two) {
+                    if (text_one.indexOf(text_two) != -1)
+                        return true;
+                }
+                $("#search").keyup(function () {
+                    var searchText = $("#search").val().toLowerCase();
+                    $(".Search").each(function () {
+                        if (!Contains($(this).text().toLowerCase(), searchText)) {
+                            $(this).hide();
+                        }
+                        else {
+                            $(this).show();
+                        }
+
+                    });
+                });
+            });
+        </script>
+    </form>
+
+
+
+
+
+
+</body>
+</html>

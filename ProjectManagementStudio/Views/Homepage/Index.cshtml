@@ -1,0 +1,117 @@
+﻿@model IEnumerable<EmsEntity.Feed>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+
+    <link href="~/Bootstrap/bootstrap.min.css" rel="stylesheet" />
+   
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        @if (Session["UserAcc"] == null)
+        {
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="http://localhost:52320/Homepage">Home <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:52320/News">News </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:52320/Login">Log In</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        }
+        else
+        {
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="http://localhost:52320/Homepage">Home <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:52320/News">News </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:52320/@Session["UserAcc"]">Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://localhost:52320/@Session["LogoutAcc"]">Log Out</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        }
+
+    </nav>
+    <br />
+
+    <h1>Welcome !</h1>
+
+    <hr />
+    @if (Session["UserAcc"] != null)
+    {
+    <form method="post" enctype="multipart/form-data">
+
+
+        <div class="form-group">
+            <textarea rows="6" cols="100" name="Homepost" required></textarea>
+            <span class="help-block"></span>
+
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Post</button>
+            <span class="help-block"></span>
+        </div>
+        <br />
+        <br />
+        <h2>Home Feed</h2>
+        <hr />
+       @foreach (var item in Model.Reverse())
+       {
+
+
+        <h6>@Html.DisplayFor(modelItem => item.Fname) @Html.DisplayFor(modelItem => item.Lname) - @Html.DisplayFor(modelItem => item.time)</h6>
+        
+       
+
+        @Html.DisplayFor(modelItem => item.Homepost)
+
+           <br />
+           <hr />
+           <br />
+
+
+       }
+
+
+    </form>
+    }
+    else
+    {
+        <a>To write post and to see them, you have to log in first !</a>
+    }
+
+
+
+</body>
+</html>
